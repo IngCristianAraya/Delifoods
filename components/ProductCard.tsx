@@ -27,7 +27,52 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white min-h-[370px] sm:min-h-[400px] flex flex-col justify-between p-0 md:p-0">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white min-h-[320px] sm:min-h-[400px] flex flex-col justify-between p-0 md:p-0">
+      {/* MOBILE: estructura visual idéntica a ServiceCard de revistadigital-next */}
+      <div className="block md:hidden">
+        <div className="relative overflow-hidden h-36 min-w-0 rounded-t-xl">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+          {/* Badge de categoría */}
+          <div className="absolute top-2 left-2 bg-gradient-to-r from-green-400 to-green-500/90 px-2 py-1 rounded-full shadow-md ring-1 ring-green-300">
+            <span className="text-xs font-bold text-white drop-shadow">{product.category}</span>
+          </div>
+          {/* Badge de precio */}
+          <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center shadow-md ring-1 ring-green-300">
+            <span className="text-xs font-bold text-green-700">S/{product.price}</span>
+          </div>
+          {/* Destacado */}
+          {product.featured && (
+            <Badge className="absolute bottom-2 left-2 bg-yellow-400 text-black shadow font-bold text-xs px-3 py-1">Destacado</Badge>
+          )}
+        </div>
+        <div className="p-3 flex flex-col flex-grow">
+          <h3 className="text-base font-bold text-gray-900 truncate mb-1">{product.name}</h3>
+          <p className="text-gray-600 mb-2 text-xs leading-relaxed line-clamp-2 flex-grow">{product.description}</p>
+          {/* Botones */}
+          <div className="flex gap-1.5 mt-auto">
+            <Button
+              onClick={() => setShowNotes(!showNotes)}
+              variant="outline"
+              size="sm"
+              className="flex-1 min-h-[36px] text-xs"
+            >
+              {showNotes ? 'Ocultar notas' : '+ notas'}
+            </Button>
+            <Button
+              onClick={handleAddToCart}
+              className="flex-1 bg-green-500 hover:bg-green-600 min-h-[36px] text-xs"
+              size="sm"
+            >
+              <Plus className="h-4 w-4 mr-1" />Agregar
+            </Button>
+          </div>
+        </div>
+      </div>
       <div className="relative">
         <img
           src={product.image}

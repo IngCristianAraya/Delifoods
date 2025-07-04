@@ -9,9 +9,12 @@ export function ProductGrid() {
   const { products } = useApp();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const filteredProducts = selectedCategory 
-    ? products.filter(product => product.category === selectedCategory && product.available)
-    : products.filter(product => product.available);
+  const [search, setSearch] = useState('');
+  const filteredProducts = products.filter(product => {
+    const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
+    const matchesSearch = product.name.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase());
+    return product.available && matchesCategory && matchesSearch;
+  });
 
   // PAGINACIÓN
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,11 +38,27 @@ export function ProductGrid() {
           <p className="text-gray-600 text-lg">Explora nuestro menú</p>
         </div>
         
-        <CategoryFilter 
-          selectedCategory={selectedCategory}
-          onCategorySelect={cat => { setSelectedCategory(cat); setCurrentPage(1); }}
-        />
-        
+        {/* Bloque de búsqueda y categorías SOLO en móvil */}
+        <div className="flex flex-col gap-3 mb-6 sticky top-2 z-20 bg-white/60 backdrop-blur-sm rounded-xl p-3 shadow-md block md:hidden">
+          <input
+            type="text"
+            placeholder="Buscar por nombre o descripción..."
+            value={search || ''}
+            onChange={e => { setSearch(e.target.value); setCurrentPage(1); }}
+            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+          />
+          <CategoryFilter 
+            selectedCategory={selectedCategory}
+            onCategorySelect={cat => { setSelectedCategory(cat); setCurrentPage(1); }}
+          />
+        </div>
+        {/* Desktop: solo categorías, sin buscador */}
+        <div className="hidden md:block">
+          <CategoryFilter 
+            selectedCategory={selectedCategory}
+            onCategorySelect={cat => { setSelectedCategory(cat); setCurrentPage(1); }}
+          />
+        </div>
         {filteredProducts.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-gray-400 text-6xl mb-4">🍽️</div>
@@ -47,9 +66,16 @@ export function ProductGrid() {
           </div>
         ) : (
           <>
-            <div
-              className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            >
+            {/* Grid SOLO en móvil, igual que revistadigital-next */}
+            <div className="grid grid-cols-2 gap-2 px-1 md:hidden">
+              {paginatedProducts.map((product) => (
+                <div className="min-w-0 w-full">
+                  <ProductCard key={product.id} product={product} />
+                </div>
+              ))}
+            </div>
+            {/* Grid desktop original */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {paginatedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

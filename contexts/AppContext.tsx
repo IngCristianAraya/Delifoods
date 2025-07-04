@@ -45,23 +45,20 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [isAdminMode, setIsAdminMode] = useState(false);
 
   const addToCart = (product: Product, quantity: number = 1, notes?: string) => {
-    setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.product.id === product.id);
-      
-      if (existingItem) {
-        return prevCart.map(item =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + quantity, notes: notes || item.notes }
-            : item
-        );
-      }
-      
-      return [...prevCart, { product, quantity, notes }];
-    });
+    const existingItem = cart.find(item => item.product.id === product.id);
+    if (existingItem) {
+      setCart(cart.map(item =>
+        item.product.id === product.id
+          ? { ...item, quantity: item.quantity + quantity, notes: notes || item.notes }
+          : item
+      ));
+    } else {
+      setCart([...cart, { product, quantity, notes }]);
+    }
   };
 
   const removeFromCart = (productId: string) => {
-    setCart(prevCart => prevCart.filter(item => item.product.id !== productId));
+    setCart(cart.filter(item => item.product.id !== productId));
   };
 
   const updateCartItem = (productId: string, quantity: number) => {
@@ -69,14 +66,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       removeFromCart(productId);
       return;
     }
-    
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.product.id === productId
-          ? { ...item, quantity }
-          : item
-      )
-    );
+    setCart(cart.map(item =>
+      item.product.id === productId
+        ? { ...item, quantity }
+        : item
+    ));
   };
 
   const clearCart = () => {

@@ -27,7 +27,7 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white min-h-[370px] sm:min-h-[400px] flex flex-col justify-between p-0 md:p-0">
       <div className="relative">
         <img
           src={product.image}
@@ -36,9 +36,13 @@ export function ProductCard({ product }: ProductCardProps) {
         />
         {product.featured && (
           <Badge className="absolute top-2 left-2 bg-red-500 text-white">
-            Featured
+            Destacados
           </Badge>
         )}
+        {/* Precio como Badge abajo a la derecha */}
+        <Badge className="absolute bottom-2 right-2 bg-green-500 text-white shadow font-bold text-base px-3 py-1">
+          S/{product.price}
+        </Badge>
         {!product.available && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <Badge variant="secondary" className="bg-gray-800 text-white">
@@ -58,15 +62,16 @@ export function ProductCard({ product }: ProductCardProps) {
         )}
       </div>
       
-      <CardContent className="p-4">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-semibold text-lg leading-tight">{product.name}</h3>
-          <span className="text-2xl font-bold text-green-600">S/{product.price}</span>
+      <CardContent className="p-4 flex flex-col flex-1 justify-between">
+        <div className="mb-2">
+          <div className="flex flex-col items-start gap-1 md:flex-row md:items-center md:justify-between">
+            <h3 className="font-semibold text-lg leading-tight md:text-left text-left w-full">{product.name}</h3>
+          </div>
+          <p className="text-gray-600 text-sm line-clamp-2 mt-1 text-left min-h-[42px] md:min-h-0">{product.description}</p>
         </div>
-        <p className="text-gray-600 text-sm line-clamp-2">{product.description}</p>
       </CardContent>
       
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-4 pt-0 flex flex-col flex-1 justify-end">
         {product.available ? (
           <div className="w-full space-y-2">
             {showNotes && (
@@ -86,17 +91,17 @@ export function ProductCard({ product }: ProductCardProps) {
                 onClick={() => setShowNotes(!showNotes)}
                 variant="outline"
                 size="sm"
-                className="flex-1"
+                className="w-1/2 md:flex-1"
               >
-                {showNotes ? 'Ocultar notas' : 'Agregar notas'}
+                {showNotes ? 'Ocultar notas' : '+ notas'}
               </Button>
               <Button
                 onClick={handleAddToCart}
-                className="flex-1 bg-green-500 hover:bg-green-600"
+                className="w-1/2 md:flex-1 bg-green-500 hover:bg-green-600"
                 size="sm"
               >
                 <Plus className="h-4 w-4 mr-2" />
-                Agregar al carrito
+                Agregar
               </Button>
             </div>
           </div>

@@ -15,7 +15,9 @@ export function ProductGrid() {
 
   // PAGINACIÓN
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
+  // Cambia productos por página según el tamaño de pantalla
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const productsPerPage = isMobile ? 4 : 8;
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const startIdx = (currentPage - 1) * productsPerPage;
   const endIdx = startIdx + productsPerPage;
@@ -30,7 +32,7 @@ export function ProductGrid() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Nuestro Menú</h2>
-          <p className="text-gray-600 text-lg">Explore our delicious selection</p>
+          <p className="text-gray-600 text-lg">Explora nuestro menú</p>
         </div>
         
         <CategoryFilter 
@@ -45,7 +47,9 @@ export function ProductGrid() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div
+              className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            >
               {paginatedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

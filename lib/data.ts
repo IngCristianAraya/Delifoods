@@ -2,17 +2,17 @@ import { Product, Category, AppConfig } from '@/types';
 
 export const defaultConfig: AppConfig = {
   business: {
-    name: "Delicias Gourmet",
+    name: "DeliFoods",
     logo: "/logo.svg",
     description: "Los mejores sabores para tu hogar, preparados con amor y ingredientes frescos.",
-    phone: "+1234567890",
-    whatsapp: "+1234567890",
-    email: "info@deliciasgourmet.com",
-    address: "Calle Principal 123, Ciudad",
-    hours: "Lunes a Domingo: 8:00 AM - 10:00 PM",
+    phone: "+51 906 684 284",
+    whatsapp: "+51 906 684 284",
+    email: "info@delifoods.com",
+    address: "Santa paula 470",
+    hours: "Lunes a Domingo: 7:00 PM - 11:00 PM",
     socialMedia: {
-      facebook: "https://facebook.com/deliciasgourmet",
-      instagram: "https://instagram.com/deliciasgourmet",
+      facebook: "https://facebook.com/delifoods",
+      instagram: "https://instagram.com/delifoods",
     }
   },
   delivery: {

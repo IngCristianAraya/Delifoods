@@ -31,7 +31,7 @@ export function BusinessInfo() {
                   alt={business.name}
                   className="h-12 w-12 rounded-full object-cover"
                 />
-                About {business.name}
+                Sobre nosotros
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -54,13 +54,17 @@ export function BusinessInfo() {
                 </div>
               </div>
 
+              <div className="mb-4 flex items-center gap-2">
+                <span className="text-3xl font-extrabold text-green-600 drop-shadow-md">Deli</span>
+                <span className="text-3xl font-extrabold text-black">Foods</span>
+              </div>
               <div className="flex gap-3">
                 <Button 
                   onClick={handleWhatsAppContact}
                   className="bg-green-500 hover:bg-green-600"
                 >
                   <MessageCircle className="h-4 w-4 mr-2" />
-                  Contact us
+                  Contacto
                 </Button>
                 {business.socialMedia.facebook && (
                   <Button variant="outline" asChild>
@@ -84,17 +88,17 @@ export function BusinessInfo() {
           <Card className="shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
-                🚚 Delivery Service
+                🚚 Delivery
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center gap-2">
-                <Badge className="bg-green-500 text-white">Available</Badge>
-                <span className="text-gray-600">Estimated time: {delivery.estimatedTime}</span>
+                <Badge className="bg-green-500 text-white">Disponible</Badge>
+                <span className="text-gray-600">Tiempo estimado: {delivery.estimatedTime}</span>
               </div>
               
               <div className="space-y-4">
-                <h4 className="font-semibold text-lg">Delivery Zones:</h4>
+                <h4 className="font-semibold text-lg">Zonas de delivery:</h4>
                 {delivery.zones.map((zone) => (
                   <div key={zone.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                     <div>

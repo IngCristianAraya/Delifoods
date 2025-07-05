@@ -23,9 +23,9 @@ export function CategoryFilter({ selectedCategory, onCategorySelect }: CategoryF
   return (
     <div className="w-full mb-6">
       {/* Filtros SOLO en móvil: fila horizontal con scroll, igual que CategoryChips de revistadigital-next */}
-      <div className="grid grid-cols-4 gap-2 p-1 bg-white/80 rounded-xl shadow-md block md:hidden">
+      <div className="grid grid-cols-4 gap-1.5 p-1 bg-white/80 rounded-xl shadow-md block md:hidden">
         <button
-          className={`px-2 py-1 rounded-lg border text-xs font-medium transition-all duration-200 ${selectedCategory === null ? 'bg-green-500 text-white border-green-500 shadow' : 'bg-white text-gray-700 border-gray-300 hover:bg-green-50'}`}
+          className={`px-1.5 py-1 rounded-lg border text-[11px] font-medium transition-all duration-200 truncate ${selectedCategory === null ? 'bg-green-500 text-white border-green-500 shadow' : 'bg-white text-gray-700 border-gray-300 hover:bg-green-50'}`}
           onClick={() => onCategorySelect(null)}
           type="button"
         >
@@ -37,11 +37,11 @@ export function CategoryFilter({ selectedCategory, onCategorySelect }: CategoryF
           .map((category) => (
             <button
               key={category.id}
-              className={`px-2 py-1 rounded-lg border text-xs font-medium transition-all duration-200 ${selectedCategory === category.id ? 'bg-green-500 text-white border-green-500 shadow' : 'bg-white text-gray-700 border-gray-300 hover:bg-green-50'}`}
+              className={`px-1.5 py-1 rounded-lg border text-[11px] font-medium transition-all duration-200 truncate ${selectedCategory === category.id ? 'bg-green-500 text-white border-green-500 shadow' : 'bg-white text-gray-700 border-gray-300 hover:bg-green-50'}`}
               onClick={() => onCategorySelect(category.id)}
               type="button"
             >
-              {category.name}
+              <span className="truncate block w-full">{category.name}</span>
             </button>
           ))}
       </div>

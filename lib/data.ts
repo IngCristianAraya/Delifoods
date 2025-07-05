@@ -46,7 +46,7 @@ export const defaultProducts: Product[] = [
   // Hamburguesas
   {
     id: "1",
-    name: "Hamburguesa Clásica",
+    name: "Hamburg. Clásica",
     price: 18,
     image: "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&fit=crop&w=400&q=80",
     description: "Carne de res, lechuga, tomate, queso cheddar y salsa.",
@@ -56,7 +56,7 @@ export const defaultProducts: Product[] = [
   },
   {
     id: "2",
-    name: "Hamburguesa BBQ",
+    name: "Hamburg. BBQ",
     price: 20,
     image: "https://images.pexels.com/photos/1639566/pexels-photo-1639566.jpeg?auto=compress&fit=crop&w=400&q=80",
     description: "Hamburguesa con salsa BBQ y queso cheddar.",
@@ -97,7 +97,7 @@ export const defaultProducts: Product[] = [
   // Bebidas
   {
     id: "6",
-    name: "Chicha 1/2 litro",
+    name: "Chicha 1/2L",
     price: 4,
     image: "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2",
     description: "Chicha de 1/2 litro",
@@ -106,7 +106,7 @@ export const defaultProducts: Product[] = [
   },
   {
     id: "7",
-    name: "Maracuya 1/2 litro",
+    name: "Maracuya 1/2L",
     price: 4,
     image: "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2",
     description: "Maracuya 1/2 litro",
@@ -116,7 +116,7 @@ export const defaultProducts: Product[] = [
   },
   {
     id: "8",
-    name: "Coca Cola 1/2 litro",
+    name: "CocaCola 1/2L",
     price: 3.5,
     image: "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2",
     description: "Coca Cola 1/2 litro",
@@ -126,7 +126,7 @@ export const defaultProducts: Product[] = [
   // Al Plato
   {
     id: "9",
-    name: "Salchipapa Clásica",
+    name: "Salchipapa Clás.",
     price: 9,
     image: "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&fit=crop&w=400&q=80",
     description: "Salchipapa clásica 400 gramos",

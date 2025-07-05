@@ -18,9 +18,18 @@ export function ProductGrid() {
 
   // PAGINACIÓN
   const [currentPage, setCurrentPage] = useState(1);
-  // Cambia productos por página según el tamaño de pantalla
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const productsPerPage = isMobile ? 4 : 8;
+  // SSR-safe: productos por página fijo en SSR, se adapta en cliente
+  const [productsPerPage, setProductsPerPage] = useState(8);
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setProductsPerPage(window.innerWidth < 768 ? 4 : 8);
+    }
+  }, []);
+
+  // Reiniciar página cuando cambia productsPerPage
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [productsPerPage]);
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const startIdx = (currentPage - 1) * productsPerPage;
   const endIdx = startIdx + productsPerPage;

@@ -41,21 +41,21 @@ export function BusinessInfo() {
               
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-green-600" />
+                  <Phone className="h-5 w-5 text-green-800" />
                   <span className="font-medium">{business.phone}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-green-600" />
+                  <MapPin className="h-5 w-5 text-green-800" />
                   <span>{business.address}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 text-green-600" />
+                  <Clock className="h-5 w-5 text-green-800" />
                   <span>{business.hours}</span>
                 </div>
               </div>
 
               <div className="mb-4 flex items-center gap-2">
-                <span className="text-3xl font-extrabold text-green-600 drop-shadow-md">Deli</span>
+                <span className="text-3xl font-extrabold text-green-800 drop-shadow-md">Deli</span>
                 <span className="text-3xl font-extrabold text-black">Foods</span>
               </div>
               <div className="flex gap-3">
@@ -68,14 +68,26 @@ export function BusinessInfo() {
                 </Button>
                 {business.socialMedia.facebook && (
                   <Button variant="outline" asChild>
-                    <a href={business.socialMedia.facebook} target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href={business.socialMedia.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ir a Facebook Delifoods"
+                      title="Facebook Delifoods"
+                    >
                       <Facebook className="h-4 w-4" />
                     </a>
                   </Button>
                 )}
                 {business.socialMedia.instagram && (
                   <Button variant="outline" asChild>
-                    <a href={business.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href={business.socialMedia.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ir a Instagram Delifoods"
+                      title="Instagram Delifoods"
+                    >
                       <Instagram className="h-4 w-4" />
                     </a>
                   </Button>
@@ -100,12 +112,12 @@ export function BusinessInfo() {
               <div className="space-y-4">
                 <h4 className="font-semibold text-lg">Zonas de delivery:</h4>
                 {delivery.zones.map((zone) => (
-                  <div key={zone.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <div key={zone.id} className="flex justify-between items-center p-3 bg-gray-100 rounded-lg">
                     <div>
                       <p className="font-medium">{zone.name}</p>
                       <p className="text-sm text-gray-600">{zone.description}</p>
                     </div>
-                    <Badge variant="outline" className="text-green-600">
+                    <Badge variant="outline" className="text-green-800">
                       S/{zone.cost}
                     </Badge>
                   </div>

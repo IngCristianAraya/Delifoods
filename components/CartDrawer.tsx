@@ -26,7 +26,7 @@ export function CartDrawer() {
         <Button variant="outline" size="icon" className="relative">
           <ShoppingCart className="h-5 w-5" style={{ color: config.theme.primaryColor }} />
           {cartCount > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center bg-green-500">
+            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center bg-green-700">
               {cartCount}
             </Badge>
           )}
@@ -62,7 +62,7 @@ export function CartDrawer() {
                       />
                       <div className="flex-1">
                         <h4 className="font-medium text-sm">{item.product.name}</h4>
-                        <p className="text-green-600 font-semibold">${item.product.price}</p>
+                        <p className="text-green-800 font-semibold">${item.product.price}</p>
                         {item.notes && (
                           <p className="text-xs text-gray-500 mt-1">{item.notes}</p>
                         )}
@@ -102,13 +102,13 @@ export function CartDrawer() {
               <div className="border-t pt-4 space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold">Total:</span>
-                  <span className="text-2xl font-bold text-green-600">${total.toFixed(2)}</span>
+                  <span className="text-2xl font-bold text-green-800">${total.toFixed(2)}</span>
                 </div>
                 
                 <div className="space-y-2">
                   <Button
                     onClick={handleWhatsAppOrder}
-                    className="w-full bg-green-500 hover:bg-green-600 text-white"
+                    className="w-full bg-green-700 hover:bg-green-700 text-white"
                     size="lg"
                   >
                     <MessageCircle className="h-5 w-5 mr-2" />

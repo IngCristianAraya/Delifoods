@@ -38,7 +38,7 @@ export function ProductCard({ product }: ProductCardProps) {
             loading="lazy"
           />
           {/* Badge de precio SOLO en móvil (abajo derecha, verde, sin número de categoría) */}
-          <div className="absolute bottom-2 right-2 bg-green-600 text-white shadow-lg font-bold text-base px-3 py-1 rounded-xl border border-white/80">
+          <div className="absolute bottom-2 right-2 bg-green-700 text-white shadow-lg font-bold text-base px-3 py-1 rounded-xl border border-white/80">
             S/{product.price}
           </div>
           {/* Destacado */}
@@ -62,7 +62,7 @@ export function ProductCard({ product }: ProductCardProps) {
               </DialogTrigger>
               <DialogContent className="max-w-xs w-full rounded-xl p-4 block md:hidden">
                 <DialogHeader className="mb-1">
-                  <DialogTitle className="text-base text-green-700 mt-0 mb-2">Notas para tu pedido</DialogTitle>
+                  <DialogTitle className="text-base text-green-800 mt-0 mb-2">Notas para tu pedido</DialogTitle>
                 </DialogHeader>
                 <Textarea
                   value={notes}
@@ -79,14 +79,14 @@ export function ProductCard({ product }: ProductCardProps) {
                   >Cerrar</Button>
                   <Button
                     onClick={() => setShowNotes(false)}
-                    className="flex-1 bg-green-500 hover:bg-green-600 flex items-center justify-center gap-1"
+                    className="flex-1 bg-green-700 hover:bg-green-700 flex items-center justify-center gap-1"
                   ><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="inline-block"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16v2a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-2m10-6V7a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v3m12 2-8 8-8-8" /></svg>Guardar</Button>
                 </div>
               </DialogContent>
             </Dialog>
             <Button
               onClick={handleAddToCart}
-              className="flex-1 bg-green-500 hover:bg-green-600 min-h-[36px] text-xs"
+              className="flex-1 bg-green-700 hover:bg-green-700 min-h-[36px] text-xs"
               size="sm"
             >
               <Plus className="h-4 w-4 mr-1" />Agregar
@@ -108,7 +108,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </Badge>
           )}
           {/* Precio como Badge abajo a la derecha */}
-          <Badge className="absolute bottom-2 right-2 bg-green-500 text-white shadow font-bold text-base px-3 py-1">
+          <Badge className="absolute bottom-2 right-2 bg-green-700 text-white shadow font-bold text-base px-3 py-1">
             S/{product.price}
           </Badge>
           {!product.available && (
@@ -163,7 +163,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 </Button>
                 <Button
                   onClick={handleAddToCart}
-                  className="w-1/2 md:flex-1 bg-green-500 hover:bg-green-600"
+                  className="w-1/2 md:flex-1 bg-green-700 hover:bg-green-700"
                   size="sm"
                 >
                   <Plus className="h-4 w-4 mr-2" />

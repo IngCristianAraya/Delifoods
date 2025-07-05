@@ -47,7 +47,7 @@ export function Header() {
             <CartDrawer />
             {/* Sheet controlado para cierre automático al activar admin */}
             <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger asChild>
+              <SheetTrigger asChild aria-label="Abrir menú">
                 <Button variant="ghost" size="icon">
                   <Menu className="h-5 w-5" />
                 </Button>
